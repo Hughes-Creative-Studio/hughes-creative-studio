@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/modera" rel="stylesheet">
+    <!-- Customization -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>About Page</title>
+    <script src="/js/script.js" defer></script>
+</head>
+<body class="landing">
+    <header>
+        <!-- logo -->
+        <div>
+            <a href="/home.html">
+                <img src="/assets/images/hcs-logos/loader-logo-dark.svg" alt="Hughes Creative Studio" class="logo-dark">
+                <img src="/assets/images/hcs-logos/loader-logo-light.svg" alt="Hughes Creative Studio" class="logo-light">
+            </a>
+            <a href="/home.html">hughes creative studio</a>
+        </div>
+        <!-- mobile menu button -->
+        <button class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <!-- navigation -->
+        <div>
+            <nav>
+                <ul>
+                    <li><a href="/pages/about.html">// about + skills</a></li>
+                    <li><a href="/pages/credentials.html">// credentials</a></li>
+                    <li><a href="/pages/works.html">// works</a></li>
+                    <li><a href="/pages/services.html">// services</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- contact -->
+        <div>
+            <a href="/pages/contact.html">
+                <button class="btn-primary">contact</button>
+            </a>
+        </div>
+    </header>
+    <!-- Add overlay for mobile menu -->
+    <div class="nav-overlay"></div>
+    <!-- date and time -->
+    <div class="date-time">
+        <span class="day">23</span>
+        <div class="date-details">
+            <span class="month">JANUARY</span>
+            <span class="time">THURSDAY 2:15PM</span>
+        </div>
+    </div>
+    <!-- theme toggle -->
+    <div class="theme-toggle">
+        <label class="theme-switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <!-- main -->
+    <main>
+        <section class="services-section">
+            <h1>services</h1>
+    
+            <div class="services-grid">
+                <!-- UX/UI Design Card -->
+                <div class="service-card" data-service="ux-ui">
+                    <div class="service-icon">
+                        <img src="/assets/images/service-icons/ux-ui-icon-dark.svg" alt="UX/UI Design" class="logo-dark">
+                        <img src="/assets/images/service-icons/ux-ui-icon.svg" alt="UX/UI Design" class="logo-light">
+                    </div>
+                    <h2 class="service-title">ux/ui design</h2>
+                    <div class="service-content">
+                        <ul class="service-description">
+                            <li>WIREFRAMING AND PROTOTYPING</li>
+                            <li>USER EXPERIENCE RESEARCH AND TESTING</li>
+                            <li>UI KIT AND DESIGN SYSTEM CREATION</li>
+                            <li>UX OPTIMIZATION</li>
+                            <li>ACCESSIBILITY AND COMPLIANCE CHECKS</li>
+                        </ul>
+                        <p class="service-price">$50 - $100/HR<br>(or per project: $500 - $5,000+ based on complexity)</p>
+                    </div>
+                    <button class="learn-more-btn">LEARN MORE</button>
+                </div>
+    
+                <!-- Graphic Design Card -->
+                <div class="service-card" data-service="graphic">
+                    <div class="service-icon">
+                        <img src="/assets/images/service-icons/graphic-design-icon-dark.svg" alt="Graphic Design" class="logo-dark">
+                        <img src="/assets/images/service-icons/graphic-design-icon.svg" alt="Graphic Design" class="logo-light">
+                    </div>
+                    <h2 class="service-title">graphic design + animation</h2>
+                    <div class="service-content">
+                        <ul class="service-description">
+                            <li>LOGO DESIGN AND BRAND IDENTITY</li>
+                            <li>CUSTOM TYPOGRAPHY AND COLOR PALETTE CREATION</li>
+                            <li>BUSINESS CARDS, BROCHURES, FLYERS, AND MARKETING COLLATERAL</li>
+                            <li>SOCIAL MEDIA GRAPHICS, VIDEO TEMPLATES, AND CONTENT CREATION</li>
+                            <li>PRESENTATION AND PITCH DECK DESIGN</li>
+                            <li>BRAND STYLE GUIDE CREATION</li>
+                            <li>PACKAGING AND MERCHANDISE DESIGN</li>
+                            <li>ANIMATED LOGOS AND BRANDING ELEMENTS</li>
+                            <li>BRAND VIDEO ADS</li>
+                        </ul>
+                        <p class="service-price">$150 - $5,000+<br>(based on project)</p>
+                    </div>
+                    <button class="learn-more-btn">LEARN MORE</button>
+                </div>
+    
+                <!-- Web Development Card -->
+                <div class="service-card" data-service="web">
+                    <div class="service-icon">
+                        <img src="/assets/images/service-icons/web-development-icon-dark.svg" alt="Web Development" class="logo-dark">
+                        <img src="/assets/images/service-icons/web-development-icon.svg" alt="Web Development" class="logo-light">
+                    </div>
+                    <h2 class="service-title">web development</h2>
+                    <div class="service-content">
+                        <ul class="service-description">
+                            <li>CUSTOM WEBSITE DESIGN (HTML, CSS, JAVASCRIPT, REACT)</li>
+                            <li>WORDPRESS, WEBFLOW, AND SHOPIFY WEBSITE BUILDS</li>
+                            <li>MOBILE-FRIENDLY AND RESPONSIVE DESIGN IMPLEMENTATION</li>
+                            <li>E-COMMERCE DEVELOPMENT (SHOPIFY, WOOCOMMERCE, ETC.)</li>
+                            <li>WEBSITE REDESIGN AND OPTIMIZATION</li>
+                            <li>LANDING PAGE AND SALES FUNNEL DEVELOPMENT</li>
+                            <li>SEO OPTIMIZATION AND GOOGLE ANALYTICS INTEGRATION</li>
+                            <li>API INTEGRATION AND CMS CUSTOMIZATION</li>
+                        </ul>
+                        <p class="service-price">$400 - $10,000+<br>(based on project size and scope)</p>
+                    </div>
+                    <button class="learn-more-btn">LEARN MORE</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <img src="/assets/images/hcs-logos/hcs-horizontal-logo-black.svg" alt="Hughes Creative Studio">
+                </div>
+                <p>1801 Chapman Avenue</p>
+                <p>Rockville, MD 20852</p>
+                <p>Phone: (202) 993-9713</p>
+                <p>Hours: Mon-Fri 9AM-6PM ET</p>
+                <p>contact@hughescreativestudio.com</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="/pages/privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="/pages/terms.html">Terms of Service</a></li>
+                    <li><a href="/pages/faqs.html">FAQs</a></li>
+                    <li><a href="/pages/pricing.html">Pricing</a></li>
+                    <li><a href="/pages/mission.html">Mission Statement</a></li>
+                    <li><a href="/pages/resources.html">Resources</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-links">
+                <h3>LINKS</h3>
+                <ul>
+                    <li><a href="/pages/about.html">About</a></li>
+                    <li><a href="/pages/credentials.html">Credentials</a></li>
+                    <li><a href="/pages/works.html">Works</a></li>
+                    <li><a href="/pages/services.html">Services</a></li>
+                    <li><a href="/pages/contact.html">Contact</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-social">
+                <h3>FOLLOW</h3>
+                <ul>
+                    <li><a href="https://www.instagram.com/hughescreativestudio/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/people/Hughes-Creative-Studio/61571989897738/" target="_blank">Facebook</a></li>
+                    <li><a href="https://github.com/Hughes-Creative-Studio" target="_blank">GitHub</a></li>
+                    <li><a href="https://x.com/hghscrtvstudio" target="_blank">X</a></li>
+                    <li><a href="https://www.linkedin.com/in/devon-hughes-developer/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://profile.indeed.com/?hl=en_US&co=US&from=gnav-jobseeker-profile--profile-one-frontend" target="_blank">Indeed</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 Hughes Creative Studio
+        </div>
+    </footer>
+</body>
+</html>
