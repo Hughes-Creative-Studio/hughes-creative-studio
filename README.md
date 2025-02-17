@@ -10,6 +10,7 @@ HUGHES CREATIVE STUDIO/
 ├── index.html          # Loader/welcome page
 ├── home.html          # Main landing page
 ├── pages/            # Additional site pages
+|   ├── home.html     
 │   ├── about.html
 │   ├── credentials.html
 │   ├── works.html
