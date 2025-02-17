@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Wait 5 seconds after showing welcome text before redirecting
                 setTimeout(() => {
-                    window.location.href = 'home.html';
+                    window.location.href = 'pages/home.html';
                 }, 5000);
             } else {
                 // Increment the width and update the visual elements
