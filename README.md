@@ -15,7 +15,13 @@ HUGHES CREATIVE STUDIO/
 │   ├── credentials.html
 │   ├── works.html
 │   ├── services.html
-│   └── contact.html
+│   ├── contact.html
+|   ├── privacy-policy.html
+|   ├── terms.html
+|   ├── faqs.html
+|   ├── pricing.html
+|   ├── mission.html
+|   └── resources.html
 ├── css/
 │   └── styles.css    # Main stylesheet
 ├── js/
@@ -125,4 +131,4 @@ Acknowledgments
 
 Font Awesome for icons
 Google Fonts
-[Any other resources or inspirations]
+
