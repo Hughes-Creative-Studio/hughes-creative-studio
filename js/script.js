@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 30); // Update every 30ms for a smooth animation
     }
 
-    // Add a small delay before starting the loader animation
+    // Small delay before starting the loader animation
     setTimeout(() => {
         updateLoader();
     }, 800);
@@ -82,7 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Theme Toggle
+
+
+// Theme Toggle //
 document.addEventListener("DOMContentLoaded", () => {
   // Get the theme toggle checkbox
   const themeToggle = document.querySelector('.theme-switch input[type="checkbox"]');
@@ -145,8 +147,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Date and Time
-// Update date and time
+
+
+
+// Date and Time //
 function updateDateTime() {
     const now = new Date();
     
@@ -360,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Add focus effects to form fields
+        // Focus effects to form fields
         const formInputs = contactForm.querySelectorAll('input, textarea');
         formInputs.forEach(input => {
             input.addEventListener('focus', () => {
@@ -376,7 +380,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Thank You Page
+
+
+
+// Thank You Page //
 document.addEventListener('DOMContentLoaded', () => {
     // Check if coming from form submission
     const submitterName = sessionStorage.getItem('submitterName');
@@ -405,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100 * (index + 1));
     });
 
-    // Animate paper plane
+    // Paper plane animation
     const paperPlane = document.querySelector('.paper-plane');
     if (paperPlane) {
         setTimeout(() => {
@@ -415,7 +422,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Credentials Page
+
+
+// Credentials Page //
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.credential-card');
     
@@ -430,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 otherCard.classList.remove('selected');
             });
             
-            // If the card wasn't previously selected, select it
+            // If card wasn't previously selected, select it
             if (!wasSelected) {
                 card.classList.add('selected');
             }
@@ -455,13 +464,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial icon visibility update
     updateIconVisibility();
 
-    // Watch for theme changes
+    // Watch theme changes
     const themeToggle = document.querySelector('.theme-switch input[type="checkbox"]');
     if (themeToggle) {
         themeToggle.addEventListener('change', updateIconVisibility);
     }
 
-    // Add smooth reveal animation for cards
+    // Smooth reveal animation for cards
     function revealCards() {
         cards.forEach((card, index) => {
             setTimeout(() => {
@@ -478,12 +487,14 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.transition = 'all 0.5s ease';
     });
 
-    // Start reveal animation after a short delay
+    
     setTimeout(revealCards, 300);
 });
 
 
-// Works Page
+
+
+// Works Page //
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize elements
     const projectLinks = document.querySelectorAll('.project-link');
@@ -608,7 +619,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Function to create modal content based on project data
+    // Functionality to create modal content based on project data
     function createModalContent(category, projectId) {
         const project = projectData[category][projectId];
         if (!project) return '';
@@ -651,7 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return content;
     }
 
-    // Add hover effects for project links
+    // Hover effects for project links
     projectLinks.forEach(link => {
         const hoverEffect = link.querySelector('.link-hover-effect');
         
@@ -709,7 +720,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Add scroll animations for portfolio sections
+    // Scroll animations for portfolio sections
     const observerOptions = {
         threshold: 0.2,
         rootMargin: '0px'
@@ -733,7 +744,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(section);
     });
 
-    // Handle theme changes
+    // Theme change handler
     const themeToggle = document.querySelector('.theme-switch input[type="checkbox"]');
     if (themeToggle) {
         themeToggle.addEventListener('change', () => {
@@ -757,19 +768,21 @@ document.addEventListener('DOMContentLoaded', () => {
 }); 
 
 
-// Services Page
+
+
+// Services Page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Get all service cards
+    
     const serviceCards = document.querySelectorAll('.service-card');
     
-    // Add click event listeners to all "Learn More" buttons
+    
     serviceCards.forEach(card => {
         const button = card.querySelector('.learn-more-btn');
         
         button.addEventListener('click', () => {
             const isExpanded = card.classList.contains('expanded');
             
-            // First collapse all cards
+            
             serviceCards.forEach(otherCard => {
                 if (otherCard !== card) {
                     otherCard.classList.remove('expanded');
@@ -777,13 +790,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             
-            // Then toggle the clicked card
+           
             card.classList.toggle('expanded');
             button.textContent = isExpanded ? 'LEARN MORE' : 'SHOW LESS';
         });
     });
 
-    // Theme change handler for icons
+    // Theme change handler
     const themeToggle = document.querySelector('.theme-switch input[type="checkbox"]');
     if (themeToggle) {
         themeToggle.addEventListener('change', () => {
@@ -794,9 +807,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Privacy policy page
+
+
+// Privacy policy page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Add scroll animation for sections
+    // Scroll animation for sections
     const privacyContent = document.querySelector('.privacy-content');
     const sections = privacyContent.querySelectorAll('h2, p, ul');
 
@@ -823,7 +838,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(section);
     });
 
-    // Smooth scroll to sections when clicking on links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -841,9 +856,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Terms of service page
+
+
+// Terms of service page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Add scroll animation for sections
+    // Scroll animation for sections
     const termsContent = document.querySelector('.terms-content');
     const sections = termsContent.querySelectorAll('h2, p, ul');
 
@@ -870,7 +887,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(section);
     });
 
-    // Smooth scroll to sections when clicking on links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -888,9 +905,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// FAQs Page
+
+
+// FAQs Page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Add scroll animation for sections
+    // Scroll animation for sections
     const faqsContent = document.querySelector('.faqs-content');
     if (!faqsContent) return; // Only run on FAQs page
     
@@ -940,7 +959,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(item);
     });
 
-    // Smooth scroll to sections when clicking on links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -956,7 +975,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add hover effect for FAQ items
+    // Hover effect for FAQ items
     faqItems.forEach(item => {
         const originalTransform = 'translateY(0)';
         const hoverTransform = 'translateX(10px)';
@@ -972,7 +991,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Pricing Page
+
+
+// Pricing Page //
 document.addEventListener('DOMContentLoaded', () => {
     // Add scroll animation for sections
     const pricingContent = document.querySelector('.pricing-content');
@@ -1013,7 +1034,7 @@ document.addEventListener('DOMContentLoaded', () => {
         section.style.transition = `all 0.6s ease-out ${index * 0.2}s`;
         sectionObserver.observe(section);
 
-        // Add hover effect reset
+        // Hover effect reset
         section.addEventListener('mouseleave', () => {
             section.style.transform = 'translateY(0)';
         });
@@ -1055,7 +1076,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 800);
     }
 
-    // Smooth scroll to sections when clicking on links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -1073,9 +1094,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Mission Statement Page
+
+
+// Mission Statement Page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Add scroll animation for sections
+    // Scroll animation
     const missionContent = document.querySelector('.mission-content');
     if (!missionContent) return; // Only run on mission page
     
@@ -1116,7 +1139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         item.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
         sectionObserver.observe(item);
 
-        // Add hover animations
+        // Hover animations
         item.addEventListener('mouseenter', () => {
             item.style.transform = 'translateY(-10px)';
         });
@@ -1145,7 +1168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 800);
     }
 
-    // Smooth scroll to sections when clicking on links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -1163,9 +1186,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Resources Page
+
+
+// Resources Page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Add scroll animation for sections
+    // Scroll animations
     const resourcesContent = document.querySelector('.resources-content');
     if (!resourcesContent) return; // Only run on resources page
     
@@ -1241,7 +1266,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 800);
     }
 
-    // Smooth scroll to sections when clicking on links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
