@@ -1691,6 +1691,28 @@ body.light-theme .logo-light {
     color: var(--clr-secondary);
 }
 
+/* Modal Content Styles */
+.project-preview h2 {
+    color: var(--clr-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.project-preview .project-description {
+    color: var(--clr-white);
+    margin-bottom: 2rem;
+}
+
+.project-preview .project-tech h3,
+.project-preview .project-features h3 {
+    color: var(--clr-primary);
+    margin-bottom: 1rem;
+}
+
+.project-preview ul {
+    color: var(--clr-white);
+    margin-bottom: 2rem;
+}
+
 /* Animations */
 @keyframes fadeInDown {
     from {
@@ -1724,12 +1746,31 @@ body.light-theme .logo-light {
     }
 }
 
-/* Light Theme Modifications */
-body.light-theme .portfolio-section {
-    background-color: rgba(var(--clr-primary-rgb), 0.05);
+/* Light Theme Modal Modifications */
+body.light-theme .project-modal {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
-body.light-theme .project-link {
+body.light-theme .modal-content {
+    background-color: var(--clr-white);
+    border-color: var(--clr-primary);
+}
+
+body.light-theme .modal-close {
+    color: var(--clr-dark);
+}
+
+body.light-theme .modal-close:hover {
+    color: var(--clr-primary);
+}
+
+/* Light theme text colors for modal content */
+body.light-theme .project-preview h2 {
+    color: var(--clr-primary);
+}
+
+body.light-theme .project-preview .project-description,
+body.light-theme .project-preview ul {
     color: var(--clr-dark);
 }
 

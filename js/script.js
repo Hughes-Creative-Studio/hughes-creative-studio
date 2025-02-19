@@ -559,8 +559,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Alert system'
                 ],
                 image: '/assets/images/projects/tech-dashboard.jpg',
-                liveUrl: 'https://dashboard.example.com',
-                githubUrl: 'https://github.com/example/tech-dashboard'
+                liveUrl: 'https://devonhughescodes.github.io/four-card-feature-section-solution/',
+                githubUrl: 'https://github.com/DevonHughesCodes/four-card-feature-section-solution'
             }
         },
         designs: {
