@@ -1089,7 +1089,7 @@ body.light-theme .availability {
 
     .logo-container {
         height: 200px;
-        margin-bottom: 3rem;
+        margin-bottom: 0rem;
     }
 
     .logo-container img {
@@ -1103,6 +1103,7 @@ body.light-theme .availability {
     .btn-get-started {
         padding: 1rem 2.5rem;
         font-size: var(--fs-400);
+        margin-top: 4rem;
     }
 }
 
