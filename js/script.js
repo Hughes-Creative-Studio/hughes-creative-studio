@@ -1,35 +1,35 @@
-// Wait for the DOM to be fully loaded before running our code
+// DOM load
 document.addEventListener('DOMContentLoaded', () => {
-    // Get all the elements we need to manipulate
+
     const progress = document.querySelector('.progress');
     const percentage = document.querySelector('.percentage');
     const welcomeText = document.querySelector('.welcome-text');
     let width = 0;
 
-    // Create a function to update our progress bar and percentage
+    // Progress bar function
     function updateLoader() {
-        // We'll use an interval to increment the progress
+
         const interval = setInterval(() => {
             if (width >= 100) {
-                // When we reach 100%, clear the interval and show welcome text
+                // Clear interval and show the welcome text
                 clearInterval(interval);
                 welcomeText.classList.remove('hidden');
                 welcomeText.classList.add('show');
                 
-                // Wait 5 seconds after showing welcome text before redirecting
+                // 5 sec timer before home page redirect
                 setTimeout(() => {
                     window.location.href = 'pages/home.html';
                 }, 5000);
             } else {
-                // Increment the width and update the visual elements
+                // Increment width + update visual elements
                 width++;
                 progress.style.width = width + '%';
                 percentage.textContent = width + '%';
             }
-        }, 30); // Update every 30ms for a smooth animation
+        }, 30); // Update every 30ms
     }
 
-    // Small delay before starting the loader animation
+    // Loader delay
     setTimeout(() => {
         updateLoader();
     }, 800);
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Get necessary elements
+
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('nav');
     const navLinks = document.querySelectorAll('nav a');
