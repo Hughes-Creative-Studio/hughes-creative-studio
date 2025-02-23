@@ -1,4 +1,4 @@
-// DOM load
+// DOM load //
 document.addEventListener('DOMContentLoaded', () => {
 
     const progress = document.querySelector('.progress');
@@ -6,30 +6,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeText = document.querySelector('.welcome-text');
     let width = 0;
 
-    // Progress bar function
+    // Progress bar
     function updateLoader() {
 
         const interval = setInterval(() => {
             if (width >= 100) {
-                // Clear interval and show the welcome text
+
                 clearInterval(interval);
                 welcomeText.classList.remove('hidden');
                 welcomeText.classList.add('show');
                 
-                // 5 sec timer before home page redirect
                 setTimeout(() => {
                     window.location.href = 'pages/home.html';
                 }, 5000);
             } else {
-                // Increment width + update visual elements
                 width++;
                 progress.style.width = width + '%';
                 percentage.textContent = width + '%';
             }
-        }, 30); // Update every 30ms
+        }, 30);
     }
 
-    // Loader delay
     setTimeout(() => {
         updateLoader();
     }, 800);
@@ -43,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav a');
     const navOverlay = document.querySelector('.nav-overlay');
 
-    // Function to toggle mobile menu
     function toggleMobileMenu() {
         mobileMenuBtn.classList.toggle('active');
         nav.classList.toggle('active');
@@ -51,13 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
     }
 
-    // Add click event to mobile menu button
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
-    // Close menu when clicking overlay
     navOverlay.addEventListener('click', toggleMobileMenu);
 
-    // Close menu when clicking nav links
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (nav.classList.contains('active')) {
@@ -66,14 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close menu on window resize (if open)
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768 && nav.classList.contains('active')) {
             toggleMobileMenu();
         }
     });
 
-    // Handle escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && nav.classList.contains('active')) {
             toggleMobileMenu();
@@ -86,19 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Theme Toggle //
 document.addEventListener("DOMContentLoaded", () => {
-  // Get the theme toggle checkbox
+
   const themeToggle = document.querySelector('.theme-switch input[type="checkbox"]');
     
-  // Get the logos
   const logoLight = document.querySelector('.logo-light');
   const logoDark = document.querySelector('.logo-dark');
   
-  // Function to set theme
   const setTheme = (isDark) => {
-      // Toggle body class for theme-specific styles
       document.body.classList.toggle('light-theme', !isDark);
       
-      // Explicitly set logo display
       if (isDark) {
           logoLight.style.display = 'none';
           logoDark.style.display = 'block';
@@ -107,40 +94,34 @@ document.addEventListener("DOMContentLoaded", () => {
           logoDark.style.display = 'none';
       }
       
-      // Save preference to localStorage
       localStorage.setItem('darkTheme', isDark);
       
-      // Update meta theme-color
       const metaThemeColor = document.querySelector('meta[name="theme-color"]');
       if (metaThemeColor) {
           metaThemeColor.setAttribute('content', isDark ? '#000000' : '#FFFFFF');
       }
   };
   
-  // Check for saved theme preference
+  // Check saved theme preference
   const savedTheme = localStorage.getItem('darkTheme');
   
-  // If there's a saved preference, apply it
   if (savedTheme !== null) {
       const isDark = savedTheme === 'true';
       themeToggle.checked = isDark;
       setTheme(isDark);
   } else {
-      // If no saved preference, check system preference
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       themeToggle.checked = prefersDark;
       setTheme(prefersDark);
   }
-  
-  // Listen for toggle changes
+
   themeToggle.addEventListener('change', (e) => {
       setTheme(e.target.checked);
   });
   
-  // Listen for system theme changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (localStorage.getItem('darkTheme') === null) {
-          // Only auto-switch if user hasn't set a preference
+
           themeToggle.checked = e.matches;
           setTheme(e.matches);
       }
@@ -154,15 +135,12 @@ document.addEventListener("DOMContentLoaded", () => {
 function updateDateTime() {
     const now = new Date();
     
-    // Update day
     document.querySelector('.day').textContent = now.getDate();
     
-    // Update month
     const months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 
                    'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
     document.querySelector('.month').textContent = months[now.getMonth()];
     
-    // Update time
     const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
     const hours = now.getHours();
     const minutes = now.getMinutes();
@@ -174,11 +152,10 @@ function updateDateTime() {
         `${days[now.getDay()]} ${formattedHours}:${formattedMinutes}${ampm}`;
 }
 
-// Update immediately and then every second
 updateDateTime();
 setInterval(updateDateTime, 1000);
 
-// Logo rotation functionality
+// Logo rotation
 document.addEventListener('DOMContentLoaded', () => {
     const logos = {
         primary: {
@@ -202,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
             darkLogo.style.display = 'block';
             lightLogo.style.display = 'block';
             
-            // Set opacity based on theme
             if (isDark) {
                 darkLogo.style.opacity = '1';
                 lightLogo.style.opacity = '0';
@@ -217,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 darkLogo.style.display = 'none';
                 lightLogo.style.display = 'none';
-            }, 500); // Match transition duration
+            }, 500);
         }
     }
     
@@ -229,10 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const current = logos[currentLogo];
         const next = currentLogo === 'primary' ? logos.secondary : logos.primary;
         
-        // Fade out current
         setLogoVisibility(current, false, isDark);
         
-        // Fade in next after transition
         setTimeout(() => {
             setLogoVisibility(next, true, isDark);
             currentLogo = currentLogo === 'primary' ? 'secondary' : 'primary';
@@ -240,24 +214,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }
     
-    // Initialize logos
     function initializeLogos() {
         const isDark = !document.body.classList.contains('light-theme');
-        
-        // Set initial state for primary logos
+
         setLogoVisibility(logos.primary, true, isDark);
         
-        // Ensure secondary logos are hidden
         setLogoVisibility(logos.secondary, false, isDark);
     }
     
-    // Initialize on load
     initializeLogos();
     
-    // Start rotation
     setInterval(rotateLogo, 10000);
     
-    // Theme toggle handler
     const themeToggle = document.querySelector('.theme-switch input[type="checkbox"]');
     if (themeToggle) {
         themeToggle.addEventListener('change', () => {
@@ -268,13 +236,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Contact Form Handling
+// Contact Form //
 document.addEventListener('DOMContentLoaded', () => {
-    // Form handling
+
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
-        // Phone number formatting
+
         const phoneInput = contactForm.querySelector('input[name="phone"]');
         if (phoneInput) {
             phoneInput.addEventListener('input', (e) => {
@@ -298,14 +266,13 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Get form elements
             const nameInput = contactForm.querySelector('input[name="name"]');
             const emailInput = contactForm.querySelector('input[name="email"]');
             const phoneInput = contactForm.querySelector('input[name="phone"]');
             const messageInput = contactForm.querySelector('textarea[name="message"]');
             const submitButton = contactForm.querySelector('.submit-btn');
 
-            // Basic validation
+            // Validation
             if (!nameInput.value.trim().includes(' ')) {
                 alert('Please enter your full name (first and last name)');
                 nameInput.focus();
@@ -333,11 +300,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                // Disable submit button and show loading state
+
                 submitButton.disabled = true;
                 submitButton.textContent = 'SENDING...';
 
-                // Submit to Formspree
                 const response = await fetch(contactForm.action, {
                     method: 'POST',
                     body: new FormData(contactForm),
@@ -347,11 +313,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    // Store name for thank you page
+ 
                     const firstName = nameInput.value.trim().split(' ')[0];
                     sessionStorage.setItem('submitterName', firstName);
                     
-                    // Redirect to thank you page
                     window.location.href = contactForm.querySelector('input[name="_next"]').value;
                 } else {
                     throw new Error('Form submission failed');
@@ -364,7 +329,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Focus effects to form fields
         const formInputs = contactForm.querySelectorAll('input, textarea');
         formInputs.forEach(input => {
             input.addEventListener('focus', () => {
@@ -385,21 +349,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Thank You Page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Check if coming from form submission
+
     const submitterName = sessionStorage.getItem('submitterName');
     
     if (submitterName) {
-        // Personalize message if name exists
+
         const thankYouTitle = document.querySelector('.thank-you-message h2');
         if (thankYouTitle) {
             thankYouTitle.textContent = `THANK YOU, ${submitterName.toUpperCase()}!`;
         }
         
-        // Clear stored name
         sessionStorage.removeItem('submitterName');
     }
 
-    // Animate elements
     const elements = document.querySelectorAll('.thank-you-message > *');
     elements.forEach((element, index) => {
         element.style.opacity = '0';
@@ -412,7 +374,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100 * (index + 1));
     });
 
-    // Paper plane animation
     const paperPlane = document.querySelector('.paper-plane');
     if (paperPlane) {
         setTimeout(() => {
@@ -428,25 +389,21 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.credential-card');
     
-    // Card selection functionality
     cards.forEach(card => {
         card.addEventListener('click', () => {
-            // Toggle selected state
+
             const wasSelected = card.classList.contains('selected');
             
-            // Remove selected state from all cards
             cards.forEach(otherCard => {
                 otherCard.classList.remove('selected');
             });
             
-            // If card wasn't previously selected, select it
             if (!wasSelected) {
                 card.classList.add('selected');
             }
         });
     });
 
-    // Theme-based icon visibility
     function updateIconVisibility() {
         const isDarkTheme = !document.body.classList.contains('light-theme');
         const darkIcons = document.querySelectorAll('.logo-dark');
@@ -461,16 +418,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initial icon visibility update
     updateIconVisibility();
 
-    // Watch theme changes
     const themeToggle = document.querySelector('.theme-switch input[type="checkbox"]');
     if (themeToggle) {
         themeToggle.addEventListener('change', updateIconVisibility);
     }
 
-    // Smooth reveal animation for cards
     function revealCards() {
         cards.forEach((card, index) => {
             setTimeout(() => {
@@ -480,7 +434,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize card positions
     cards.forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
@@ -496,14 +449,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Works Page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize elements
+
     const projectLinks = document.querySelectorAll('.project-link');
     const modal = document.querySelector('.project-modal');
     const modalContent = modal.querySelector('.modal-content');
     const modalClose = modal.querySelector('.modal-close');
     const portfolioSections = document.querySelectorAll('.portfolio-section');
 
-    // Project data structure containing all project information
     const projectData = {
         development: {
             'space-tourism': {
@@ -619,7 +571,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Functionality to create modal content based on project data
     function createModalContent(category, projectId) {
         const project = projectData[category][projectId];
         if (!project) return '';
@@ -662,7 +613,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return content;
     }
 
-    // Hover effects for project links
     projectLinks.forEach(link => {
         const hoverEffect = link.querySelector('.link-hover-effect');
         
@@ -675,18 +625,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Handle project link clicks and modal display
     projectLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const category = link.dataset.category;
             const projectId = link.dataset.project;
             
-            // Create and insert modal content
             const content = createModalContent(category, projectId);
             modalContent.querySelector('.modal-body').innerHTML = content;
             
-            // Show modal with animation
             modal.style.display = 'flex';
             setTimeout(() => {
                 modal.classList.add('active');
@@ -696,7 +643,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close modal functionality
     function closeModal() {
         modal.classList.remove('active');
         modalContent.style.opacity = '0';
@@ -713,14 +659,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close modal with Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.style.display === 'flex') {
             closeModal();
         }
     });
 
-    // Scroll animations for portfolio sections
     const observerOptions = {
         threshold: 0.2,
         rootMargin: '0px'
@@ -736,7 +680,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Initialize section animations
     portfolioSections.forEach(section => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(20px)';
@@ -744,14 +687,12 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(section);
     });
 
-    // Theme change handler
     const themeToggle = document.querySelector('.theme-switch input[type="checkbox"]');
     if (themeToggle) {
         themeToggle.addEventListener('change', () => {
             const isDark = themeToggle.checked;
             document.body.classList.toggle('light-theme', !isDark);
             
-            // Update modal styles based on theme
             if (modal) {
                 modal.style.backgroundColor = isDark 
                     ? 'rgba(0, 0, 0, 0.9)' 
@@ -760,7 +701,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize loading animation
     window.addEventListener('load', () => {
         document.querySelector('.works-title').style.opacity = '1';
         document.querySelector('.works-title').style.transform = 'translateY(0)';
@@ -775,7 +715,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const serviceCards = document.querySelectorAll('.service-card');
     
-    
     serviceCards.forEach(card => {
         const button = card.querySelector('.learn-more-btn');
         
@@ -789,14 +728,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     otherCard.querySelector('.learn-more-btn').textContent = 'LEARN MORE';
                 }
             });
-            
-           
+                  
             card.classList.toggle('expanded');
             button.textContent = isExpanded ? 'LEARN MORE' : 'SHOW LESS';
         });
     });
 
-    // Theme change handler
     const themeToggle = document.querySelector('.theme-switch input[type="checkbox"]');
     if (themeToggle) {
         themeToggle.addEventListener('change', () => {
@@ -811,7 +748,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Privacy policy page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll animation for sections
+
     const privacyContent = document.querySelector('.privacy-content');
     const sections = privacyContent.querySelectorAll('h2, p, ul');
 
@@ -830,7 +767,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Initialize section animations
     sections.forEach((section, index) => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(20px)';
@@ -860,7 +796,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Terms of service page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll animation for sections
+
     const termsContent = document.querySelector('.terms-content');
     const sections = termsContent.querySelectorAll('h2, p, ul');
 
@@ -879,7 +815,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Initialize section animations
     sections.forEach((section, index) => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(20px)';
@@ -909,9 +844,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // FAQs Page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll animation for sections
+
     const faqsContent = document.querySelector('.faqs-content');
-    if (!faqsContent) return; // Only run on FAQs page
+    if (!faqsContent) return;
     
     const sections = faqsContent.querySelectorAll('.faq-section');
     const faqItems = faqsContent.querySelectorAll('.faq-item');
@@ -932,7 +867,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Initialize contact info section animations
     if (contactInfo) {
         const contactElements = contactInfo.querySelectorAll('h2, p');
         contactElements.forEach((element, index) => {
@@ -943,7 +877,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize section animations
     sections.forEach((section, index) => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(20px)';
@@ -951,7 +884,6 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(section);
     });
 
-    // Initialize FAQ item animations
     faqItems.forEach((item, index) => {
         item.style.opacity = '0';
         item.style.transform = 'translateY(20px)';
@@ -975,7 +907,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Hover effect for FAQ items
     faqItems.forEach(item => {
         const originalTransform = 'translateY(0)';
         const hoverTransform = 'translateX(10px)';
@@ -995,9 +926,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Pricing Page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Add scroll animation for sections
+
     const pricingContent = document.querySelector('.pricing-content');
-    if (!pricingContent) return; // Only run on pricing page
+    if (!pricingContent) return;
     
     const pricingSections = document.querySelectorAll('.pricing-section');
     const pricingModels = document.querySelector('.pricing-models');
@@ -1019,7 +950,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Initialize intro text animation
     if (introText) {
         introText.style.opacity = '0';
         introText.style.transform = 'translateY(20px)';
@@ -1027,27 +957,23 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(introText);
     }
 
-    // Initialize pricing sections animations
     pricingSections.forEach((section, index) => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(20px)';
         section.style.transition = `all 0.6s ease-out ${index * 0.2}s`;
         sectionObserver.observe(section);
 
-        // Hover effect reset
         section.addEventListener('mouseleave', () => {
             section.style.transform = 'translateY(0)';
         });
     });
 
-    // Initialize pricing models section animation
     if (pricingModels) {
         pricingModels.style.opacity = '0';
         pricingModels.style.transform = 'translateY(20px)';
         pricingModels.style.transition = 'all 0.6s ease-out';
         sectionObserver.observe(pricingModels);
 
-        // Animate model items
         const modelItems = pricingModels.querySelectorAll('.model-item');
         modelItems.forEach((item, index) => {
             item.style.opacity = '0';
@@ -1057,7 +983,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize contact info section animations
     if (contactInfo) {
         const contactElements = contactInfo.querySelectorAll('h2, p');
         contactElements.forEach((element, index) => {
@@ -1068,7 +993,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Title gradient animation
     const titleGradient = document.querySelector('.title-gradient');
     if (titleGradient) {
         setTimeout(() => {
@@ -1098,9 +1022,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Mission Statement Page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll animation
+
     const missionContent = document.querySelector('.mission-content');
-    if (!missionContent) return; // Only run on mission page
+    if (!missionContent) return;
     
     const missionStatement = missionContent.querySelector('.mission-statement');
     const valueItems = missionContent.querySelectorAll('.value-item');
@@ -1121,7 +1045,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Initialize mission statement animations
     if (missionStatement) {
         const paragraphs = missionStatement.querySelectorAll('p');
         paragraphs.forEach((paragraph, index) => {
@@ -1132,14 +1055,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize value items animations
     valueItems.forEach((item, index) => {
         item.style.opacity = '0';
         item.style.transform = 'translateY(20px)';
         item.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
         sectionObserver.observe(item);
 
-        // Hover animations
         item.addEventListener('mouseenter', () => {
             item.style.transform = 'translateY(-10px)';
         });
@@ -1149,7 +1070,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize contact info section animations
     if (contactInfo) {
         const contactElements = contactInfo.querySelectorAll('h2, p');
         contactElements.forEach((element, index) => {
@@ -1160,7 +1080,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Title gradient animation
     const titleGradient = document.querySelector('.title-gradient');
     if (titleGradient) {
         setTimeout(() => {
@@ -1190,9 +1109,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Resources Page //
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll animations
+
     const resourcesContent = document.querySelector('.resources-content');
-    if (!resourcesContent) return; // Only run on resources page
+    if (!resourcesContent) return; 
     
     const resourceSections = document.querySelectorAll('.resource-section');
     const resourceItems = document.querySelectorAll('.resource-item');
@@ -1214,7 +1133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Initialize intro text animation
     if (introText) {
         introText.style.opacity = '0';
         introText.style.transform = 'translateY(20px)';
@@ -1222,7 +1140,6 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(introText);
     }
 
-    // Initialize section animations
     resourceSections.forEach((section, index) => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(20px)';
@@ -1230,14 +1147,12 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(section);
     });
 
-    // Initialize resource items animations
     resourceItems.forEach((item, index) => {
         item.style.opacity = '0';
         item.style.transform = 'translateY(20px)';
         item.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
         sectionObserver.observe(item);
 
-        // Add hover animations
         item.addEventListener('mouseenter', () => {
             item.style.transform = 'translateY(-10px)';
         });
@@ -1247,7 +1162,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize contact info section animations
     if (contactInfo) {
         const contactElements = contactInfo.querySelectorAll('h2, p');
         contactElements.forEach((element, index) => {
@@ -1258,7 +1172,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Title gradient animation
     const titleGradient = document.querySelector('.title-gradient');
     if (titleGradient) {
         setTimeout(() => {
