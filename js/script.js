@@ -461,16 +461,15 @@ document.addEventListener('DOMContentLoaded', () => {
             'space-tourism': {
                 title: 'Space Tourism',
                 description: 'An immersive web experience showcasing space tourism opportunities. Users can explore destinations, crew members, and technology used in space travel.',
-                technologies: ['React', 'Next.js', 'TailwindCSS', 'Three.js'],
+                technologies: ['CSS', 'Javascript', 'HTML'],
                 features: [
-                    'Interactive 3D planet viewer',
-                    'Real-time space weather updates',
-                    'Virtual space station tour',
-                    'Booking simulation system'
+                    'Interactive planet viewer',
+                    'Interactive crew member profiles',
+                    'Interactive technology overview'
                 ],
-                image: '/assets/images/projects/space-tourism.jpg',
-                liveUrl: 'https://space-tourism.example.com',
-                githubUrl: 'https://github.com/example/space-tourism'
+                image: '/assets/images/projects/space-tourism.svg',
+                liveUrl: 'https://hughes-creative-studio.github.io/Space-Tourism/',
+                githubUrl: 'https://github.com/Hughes-Creative-Studio/Space-Tourism'
             },
             'e-commerce': {
                 title: 'E-Commerce Platform',
@@ -517,17 +516,17 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         designs: {
             'design-1': {
-                title: 'Brand Identity Design',
-                description: 'Complete brand identity package including logo design, color palette, typography, and brand guidelines.',
-                tools: ['Figma', 'Adobe Illustrator', 'Adobe Photoshop'],
+                title: 'Brand T-Shirt Designs',
+                description: 'Complete brand identity package including logo designs, typography, neck tag, and limited edition patch',
+                tools: ['Affinity Designer'],
                 deliverables: [
-                    'Logo suite',
-                    'Brand guidelines',
-                    'Marketing materials',
-                    'Social media templates'
+                    'Apparel design collection',
+                    'Tag guidelines',
+                    'Limited edition patch',
+                    'Tech pack demo'
                 ],
-                image: '/assets/images/projects/design-1.jpg',
-                behanceUrl: 'https://behance.net/example/design-1'
+                image: '/assets/images/projects/hardrada-logo.svg',
+                behanceUrl: 'https://dribbble.com/shots/25661403-Hardrada-Design-Collection'
             },
             'design-2': {
                 title: 'UI/UX Design System',
