@@ -526,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Tech pack demo'
                 ],
                 image: '/assets/images/projects/hardrada-logo.svg',
-                behanceUrl: 'https://dribbble.com/shots/25661403-Hardrada-Design-Collection'
+                behanceUrl: 'https://www.behance.net/gallery/221745579/Hardrada-Product-Line-Designs?'
             },
             'design-2': {
                 title: 'UI/UX Design System',
