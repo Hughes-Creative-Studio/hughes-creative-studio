@@ -1843,7 +1843,7 @@ body.light-theme .project-preview ul {
 }
 
 .service-card.expanded {
-    height: 650px;
+    height: 575px;
 }
 
 /* Icon Styles */
@@ -1963,7 +1963,7 @@ body.light-theme .service-card {
     }
 
     .service-card.expanded {
-        height: 800px;
+        height: 625px;
     }
 }
 
