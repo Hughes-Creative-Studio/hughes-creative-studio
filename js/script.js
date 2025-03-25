@@ -488,16 +488,16 @@ document.addEventListener('DOMContentLoaded', () => {
             'signup-form': {
                 title: 'Dynamic Signup Form',
                 description: 'A multi-step signup form with real-time validation and progress tracking.',
-                technologies: ['React', 'Formik', 'Yup', 'Styled Components'],
+                technologies: ['HTML', 'CSS', 'JAVASCRIPT'],
                 features: [
                     'Multi-step form wizard',
                     'Real-time validation',
                     'Progress tracking',
                     'Responsive design'
                 ],
-                image: '/assets/images/projects/signup-form.jpg',
-                liveUrl: 'https://signup.example.com',
-                githubUrl: 'https://github.com/example/signup-form'
+                image: '/assets/images/projects/signup-form.svg',
+                liveUrl: 'https://hughes-creative-studio.github.io/Multi-step-Form/',
+                githubUrl: 'https://github.com/Hughes-Creative-Studio/Multi-step-Form'
             },
             'powered-by-technology': {
                 title: 'Technology Dashboard',
