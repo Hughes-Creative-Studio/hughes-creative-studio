@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'space-tourism': {
                 title: 'Space Tourism',
                 description: 'An immersive web experience showcasing space tourism opportunities. Users can explore destinations, crew members, and technology used in space travel.',
-                technologies: ['CSS', 'Javascript', 'HTML'],
+                technologies: ['CSS', 'JAVASCRIPT', 'HTML'],
                 features: [
                     'Interactive planet viewer',
                     'Interactive crew member profiles',
@@ -499,19 +499,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 liveUrl: 'https://hughes-creative-studio.github.io/Multi-step-Form/',
                 githubUrl: 'https://github.com/Hughes-Creative-Studio/Multi-step-Form'
             },
-            'powered-by-technology': {
-                title: 'Technology Dashboard',
-                description: 'An advanced dashboard for monitoring and managing technological infrastructure.',
-                technologies: ['Angular', 'D3.js', 'Socket.io', 'Express'],
+            'bookmark-landing-page': {
+                title: 'Bookmark Landing Page',
+                description: 'A clean and simple interface to organize your favourite websites.',
+                technologies: ['HTML', 'CSS', 'JAVASCRIPT', 'Express'],
                 features: [
-                    'Real-time data visualization',
-                    'System health monitoring',
-                    'Automated reporting',
-                    'Alert system'
+                    'Expandable FAQ section',
+                    'Interactive responsive design',
+                    'Functional email input field',
+                    'Modern background blur header'
                 ],
-                image: '/assets/images/projects/tech-dashboard.jpg',
-                liveUrl: 'https://devonhughescodes.github.io/four-card-feature-section-solution/',
-                githubUrl: 'https://github.com/DevonHughesCodes/four-card-feature-section-solution'
+                image: '/assets/images/projects/bookmark-landing.svg',
+                liveUrl: 'https://hughes-creative-studio.github.io/Bookmark-Landing-Page/',
+                githubUrl: 'https://github.com/Hughes-Creative-Studio/Bookmark-Landing-Page'
             }
         },
         designs: {
