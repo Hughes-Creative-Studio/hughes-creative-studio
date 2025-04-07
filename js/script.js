@@ -1194,3 +1194,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+
+
+// Profile Pictures //
+document.addEventListener('DOMContentLoaded', function() {
+    const firstImage = document.querySelector('.profile-image');
+    const secondImage = document.querySelector('.profile-image-2');
+    
+    if (!firstImage || !secondImage) return;
+    
+    const container = document.querySelector('.profile-image-container');
+    if (container) {
+        container.style.position = 'relative';
+        
+        firstImage.style.display = 'block';
+        firstImage.style.position = 'relative';
+        firstImage.style.zIndex = '1';
+        
+        secondImage.style.position = 'absolute';
+        secondImage.style.top = '0';
+        secondImage.style.left = '0';
+        secondImage.style.width = '100%';
+        secondImage.style.height = '100%';
+        secondImage.style.zIndex = '2';
+        secondImage.style.opacity = '0';
+        secondImage.style.transition = 'opacity 1.5s ease-in-out';
+    }
+    
+    function toggleSecondImage() {
+        const currentOpacity = parseFloat(secondImage.style.opacity);
+        
+        secondImage.style.opacity = currentOpacity === 0 ? '1' : '0';
+    }
+    
+    setInterval(toggleSecondImage, 8000);
+});
