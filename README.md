@@ -41,7 +41,6 @@ HUGHES CREATIVE STUDIO/
 - CSS3 (Custom properties, Flexbox, Grid, Animations)
 - Vanilla JavaScript
 - Git for version control
-- Netlify for hosting and deployment
 
 ## Design System
 
@@ -119,7 +118,7 @@ Email: contact@hughescreativestudio.com
 Website: hughescreativestudio.com
 
 License
-© 2024 Hughes Creative Studio. All rights reserved.
+© 2025 Hughes Creative Studio. All rights reserved.
 Version History
 
 v1.0.0 - Initial release with core functionality
