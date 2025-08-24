@@ -2056,6 +2056,73 @@ body.light-theme .service-card {
     resize: vertical;
 }
 
+/* CAPTCHA Specific Styles */
+        .captcha-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem;
+            border: 2px solid var(--clr-primary);
+            border-radius: 8px;
+            background: rgba(0, 212, 255, 0.05);
+            margin: 1rem 0;
+        }
+
+        .captcha-question {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--clr-white);
+            font-family: var(--ff-primary);
+            font-size: var(--fs-500);
+            font-weight: 600;
+        }
+
+        .captcha-question .icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--clr-primary);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .math-problem {
+            font-size: var(--fs-500);
+            color: var(--clr-primary);
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+
+        .captcha-input {
+            width: 80px !important;
+            text-align: center;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .captcha-refresh {
+            background: var(--clr-secondary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: var(--ff-primary);
+            font-size: var(--fs-300);
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .captcha-refresh:hover {
+            background: #e55a2b;
+            transform: scale(1.05);
+        }
+
 .submit-btn {
     background-color: var(--clr-primary);
     color: var(--clr-white);
@@ -2116,6 +2183,14 @@ body.light-theme .form-group textarea {
 
 body.light-theme .form-group label {
     color: var(--clr-primary);
+}
+
+body.light-theme .captcha-question {
+    color: var(--clr-dark);
+}
+
+body.light-theme .captcha-group {
+    background: rgba(0, 212, 255, 0.1);
 }
 
 body.light-theme .logo-dark {

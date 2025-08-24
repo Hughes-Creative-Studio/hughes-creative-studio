@@ -212,6 +212,17 @@
                 <textarea name="message" placeholder="" required></textarea>
             </div>
 
+            <!-- CAPTCHA Section -->
+            <div class="captcha-group">
+                <div class="captcha-question">
+                    <div class="icon">🔒</div>
+                    <span>Please solve this math problem:</span>
+                    <span class="math-problem" id="mathProblem"></span>
+                    <input type="number" class="captcha-input" id="captchaAnswer" placeholder="?" required>
+                </div>
+                <button type="button" class="captcha-refresh" onclick="generateCaptcha()">New Problem</button>
+            </div>
+
             <button type="submit" class="submit-btn">SUBMIT</button>
         </form>
 

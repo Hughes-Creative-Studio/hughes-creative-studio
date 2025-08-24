@@ -239,6 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Contact Form //
 document.addEventListener('DOMContentLoaded', () => {
 
+    generateCaptcha();
+
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
@@ -264,69 +266,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Form submission
         contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
+          e.preventDefault();
 
-            const nameInput = contactForm.querySelector('input[name="name"]');
-            const emailInput = contactForm.querySelector('input[name="email"]');
-            const phoneInput = contactForm.querySelector('input[name="phone"]');
-            const messageInput = contactForm.querySelector('textarea[name="message"]');
-            const submitButton = contactForm.querySelector('.submit-btn');
+          const nameInput = contactForm.querySelector('input[name="name"]');
+          const emailInput = contactForm.querySelector('input[name="email"]');
+          const phoneInput = contactForm.querySelector('input[name="phone"]');
+          const messageInput = contactForm.querySelector(
+            'textarea[name="message"]'
+          );
+          const captchaInput = document.getElementById("captchaAnswer");
+          const submitButton = contactForm.querySelector(".submit-btn");
 
-            // Validation
-            if (!nameInput.value.trim().includes(' ')) {
-                alert('Please enter your full name (first and last name)');
-                nameInput.focus();
-                return;
+          // Validation
+          if (!nameInput.value.trim().includes(" ")) {
+            alert("Please enter your full name (first and last name)");
+            nameInput.focus();
+            return;
+          }
+
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(emailInput.value.trim())) {
+            alert("Please enter a valid email address");
+            emailInput.focus();
+            return;
+          }
+
+          const phoneRegex = /^\(\d{3}\)\s\d{3}-\d{4}$/;
+          if (!phoneRegex.test(phoneInput.value.trim())) {
+            alert(
+              "Please enter a valid phone number in the format (222) 222-2222"
+            );
+            phoneInput.focus();
+            return;
+          }
+
+          if (messageInput.value.trim().length < 10) {
+            alert("Please enter a message with at least 10 characters");
+            messageInput.focus();
+            return;
+          }
+
+          // CAPTCHA validation
+          const userAnswer = parseInt(captchaInput.value);
+          if (isNaN(userAnswer) || userAnswer !== correctAnswer) {
+            alert("Please solve the math problem correctly");
+            captchaInput.focus();
+            generateCaptcha(); // Generate new problem
+            return;
+          }
+
+          try {
+            submitButton.disabled = true;
+            submitButton.textContent = "SENDING...";
+
+            const response = await fetch(contactForm.action, {
+              method: "POST",
+              body: new FormData(contactForm),
+              headers: {
+                Accept: "application/json",
+              },
+            });
+
+            if (response.ok) {
+              const firstName = nameInput.value.trim().split(" ")[0];
+              // Since we can't use sessionStorage, we'll pass the name via URL
+              const thankYouUrl = contactForm.querySelector(
+                'input[name="_next"]'
+              ).value;
+              window.location.href = `${thankYouUrl}?name=${encodeURIComponent(
+                firstName
+              )}`;
+            } else {
+              throw new Error("Form submission failed");
             }
-
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(emailInput.value.trim())) {
-                alert('Please enter a valid email address');
-                emailInput.focus();
-                return;
-            }
-
-            const phoneRegex = /^\(\d{3}\)\s\d{3}-\d{4}$/;
-            if (!phoneRegex.test(phoneInput.value.trim())) {
-                alert('Please enter a valid phone number in the format (222) 222-2222');
-                phoneInput.focus();
-                return;
-            }
-
-            if (messageInput.value.trim().length < 10) {
-                alert('Please enter a message with at least 10 characters');
-                messageInput.focus();
-                return;
-            }
-
-            try {
-
-                submitButton.disabled = true;
-                submitButton.textContent = 'SENDING...';
-
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: new FormData(contactForm),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
- 
-                    const firstName = nameInput.value.trim().split(' ')[0];
-                    sessionStorage.setItem('submitterName', firstName);
-                    
-                    window.location.href = contactForm.querySelector('input[name="_next"]').value;
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (error) {
-                console.error('Submission error:', error);
-                alert('There was a problem submitting your form. Please try again.');
-                submitButton.disabled = false;
-                submitButton.textContent = 'SUBMIT';
-            }
+          } catch (error) {
+            console.error("Submission error:", error);
+            alert(
+              "There was a problem submitting your form. Please try again."
+            );
+            submitButton.disabled = false;
+            submitButton.textContent = "SUBMIT";
+          }
         });
 
         const formInputs = contactForm.querySelectorAll('input, textarea');
@@ -343,6 +363,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+
+
+// CAPTCHA functionality //
+        let correctAnswer = 0;
+
+        function generateCaptcha() {
+            const num1 = Math.floor(Math.random() * 20) + 1;
+            const num2 = Math.floor(Math.random() * 20) + 1;
+            const operations = ['+', '-', '×'];
+            const operation = operations[Math.floor(Math.random() * operations.length)];
+            
+            let problem = '';
+            
+            switch(operation) {
+                case '+':
+                    problem = `${num1} + ${num2} = `;
+                    correctAnswer = num1 + num2;
+                    break;
+                case '-':
+                    // Ensure positive result
+                    const larger = Math.max(num1, num2);
+                    const smaller = Math.min(num1, num2);
+                    problem = `${larger} - ${smaller} = `;
+                    correctAnswer = larger - smaller;
+                    break;
+                case '×':
+                    // Use smaller numbers for multiplication
+                    const smallNum1 = Math.floor(Math.random() * 10) + 1;
+                    const smallNum2 = Math.floor(Math.random() * 10) + 1;
+                    problem = `${smallNum1} × ${smallNum2} = `;
+                    correctAnswer = smallNum1 * smallNum2;
+                    break;
+            }
+            
+            document.getElementById('mathProblem').textContent = problem;
+            document.getElementById('captchaAnswer').value = '';
+        }
+
+        // Make generateCaptcha globally accessible
+        window.generateCaptcha = generateCaptcha;
 
 
 
